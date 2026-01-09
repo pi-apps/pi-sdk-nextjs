@@ -37,28 +37,17 @@ Core goals:
 npm install pi-sdk-nextjs
 # or
 yarn add pi-sdk-nextjs
-⚙️ Environment Variables
-Create a .env.local file in your Next.js project:
 
-Env
+Environment Variables
+Create a .env.local file in your Next.js project:
 PI_API_KEY=your_pi_api_key
 PI_APP_ID=your_app_id
 PI_CALLBACK_URL=http://localhost:3000/api/pi/callback
-⚠️ Never expose PI_API_KEY to the client.
-All Pi verification must happen on the server.
-🚀 Basic Usage (Next.js App Router)
 
-===== Initialize the Pi Client
-// lib/pi.ts
-import { PiClient } from "pi-sdk-nextjs";
 
-export const piClient = new PiClient({
-  apiKey: process.env.PI_API_KEY!,
-  appId: process.env.PI_APP_ID!,
-  callbackUrl: process.env.PI_CALLBACK_URL!,
-});
+Basic Usage (Next.js App Router)
+Initialize the Pi Client
 
-==== Redirect the User to Pi Login
 // app/api/pi/auth/route.ts
 import { NextResponse } from "next/server";
 import { piClient } from "@/lib/pi";
@@ -68,7 +57,8 @@ export async function GET() {
   return NextResponse.redirect(authUrl);
 }
 
-?123 Handle the Pi Callback
+Redirect the User to Pi Login
+
 // app/api/pi/callback/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { piClient } from "@/lib/pi";
@@ -82,28 +72,26 @@ export async function GET(req: NextRequest) {
   return NextResponse.redirect("/dashboard");
 }
 
-
-?123🔐 Security Model
+Security Model
 All Pi authentication verification must occur server-side
 Client input should never be trusted for authentication
 Treat Pi callbacks as authentication events
 Log and monitor failed verification attempts
-🧩 Design Principles
+
+Design Principles
 Explicit over implicit authentication flow
 Server-first security model
 Framework-native Next.js integration
 Composable SDK usage
-📚 Examples
-A complete working Next.js authentication example is provided separately under:
-Salin kode
+
+Examples
+A complete working Next.js authentication example is provided separately under
 
 examples/nextjs-basic
-🤝 Contributions
+
+Contributions
 Contributions are welcome, especially:
 Documentation improvements
 Example applications
 Non-breaking helper utilities
 Please avoid modifying core authentication logic without prior discussion.
-📄 License
-This project is licensed under the same terms as the upstream repository.
-All credits belong to the original maintainers.
