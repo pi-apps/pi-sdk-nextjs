@@ -68,7 +68,7 @@ export async function GET() {
   return NextResponse.redirect(authUrl);
 }
 
-==== Handle the Pi Callback
+?123 Handle the Pi Callback
 // app/api/pi/callback/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { piClient } from "@/lib/pi";
@@ -83,7 +83,7 @@ export async function GET(req: NextRequest) {
 }
 
 
-====🔐 Security Model
+?123🔐 Security Model
 All Pi authentication verification must occur server-side
 Client input should never be trusted for authentication
 Treat Pi callbacks as authentication events
