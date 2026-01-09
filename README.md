@@ -87,6 +87,8 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.redirect("/dashboard");
 }
+
+
 🔐 Security Model
 All Pi authentication verification must occur server-side
 Client input should never be trusted for authentication
