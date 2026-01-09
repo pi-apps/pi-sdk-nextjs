@@ -33,15 +33,21 @@ ensureComponents().then(() => {
       process.exit(code);
     }
 
-    // Ensure "use client" at the top of PiButton.tsx
     try {
       let content = await fs.readFile(piButtonFile, 'utf8');
+      // Ensure "use client" at the top
       if (!content.startsWith('"use client"') && !content.startsWith("'use client'")) {
         content = '"use client";\n' + content;
-        await fs.writeFile(piButtonFile, content, 'utf8');
       }
+      // Replace: import { PaymentData } from 'pi-sdk-js';
+      // with:     import { PaymentData, PiSdkBase } from 'pi-sdk-js';\nPiSdkBase.paymentBasePath = "api/pi_payment";
+      content = content.replace(
+        /import\s+\{\s*PaymentData\s*\}\s+from\s+['\"]pi-sdk-js['\"];?/,
+        "import { PaymentData, PiSdkBase } from 'pi-sdk-js';\nPiSdkBase.paymentBasePath = \"api/pi_payment\";"
+      );
+      await fs.writeFile(piButtonFile, content, 'utf8');
     } catch (err) {
-      console.error(`[Pi SDK Nextjs] Could not add 'use client' to PiButton.tsx:`, err);
+      console.error(`[Pi SDK Nextjs] Could not update PiButton.tsx:`, err);
       process.exit(1);
     }
 
