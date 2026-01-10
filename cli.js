@@ -39,12 +39,6 @@ ensureComponents().then(() => {
       if (!content.startsWith('"use client"') && !content.startsWith("'use client'")) {
         content = '"use client";\n' + content;
       }
-      // Replace: import { PaymentData } from 'pi-sdk-js';
-      // with:     import { PaymentData, PiSdkBase } from 'pi-sdk-js';\nPiSdkBase.paymentBasePath = "api/pi_payment";
-      content = content.replace(
-        /import\s+\{\s*PaymentData\s*\}\s+from\s+['\"]pi-sdk-js['\"];?/,
-        "import { PaymentData, PiSdkBase } from 'pi-sdk-js';\nPiSdkBase.paymentBasePath = \"api/pi_payment\";"
-      );
       await fs.writeFile(piButtonFile, content, 'utf8');
     } catch (err) {
       console.error(`[Pi SDK Nextjs] Could not update PiButton.tsx:`, err);
@@ -64,7 +58,7 @@ ensureComponents().then(() => {
       await fs.mkdir(apiRouteDir, { recursive: true });
       const routeFile = path.join(apiRouteDir, 'route.ts');
       if (!(await fileExists(routeFile))) {
-        const content = `import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(req: NextRequest) {\n  // TODO: Fill this handler with Pi logic or call out to your SDK\n  return NextResponse.json({ ok: true, endpoint: '${endpoint}' });\n}\n`;
+	const content = `import { NextRequest, NextResponse } from 'next/server';\nimport { ${endpoint}POST } from 'pi-sdk-nextjs';\n\nexport async function POST(req: NextRequest) {\n  // TODO: Fill this handler with Pi logic or call out to your SDK\n  return ${endpoint}POST(req);\n}`;
         await fs.writeFile(routeFile, content, 'utf8');
       }
     }

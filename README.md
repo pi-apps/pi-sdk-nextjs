@@ -46,6 +46,7 @@ boilerplate.
 ---
 
 ## 📹 Video Script
+You can watch a (video)[https://www.youtube.com/watch?v=cIFqf1Z5pRM&t=35s] describing the entire process.
 Here's are the commands used in the video.
 ```bash
 # Create the app
