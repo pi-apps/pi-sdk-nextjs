@@ -45,22 +45,22 @@ It is part of the "Ten Minutes to Transactions" effort described in this
    }
    ```
 
-6. ** Register your application with Pi Network: **
+6. **Register your application with Pi Network:**
    Open your Pi Mining app. Click the hamburger. Select "Pi Utilities". Click the "Develop" icon followed by the
    "New App" icon. Provide name and description of your app and submit. Then click the "Configuration" icon. Set
    the app URL to something valid, but does not necessarily exists, and the development URL to be
    "http://localhost:3000" (actual port is up to you). Submit your changes.
 
-6. ** Provide the Pi API key as an environment variable: **
+6. **Provide the Pi API key as an environment variable:**
    Click on the "API Key" icon to get the API key for your app.
     ```bash
     export PI_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     ```
 
-6. ** Register a wallet for your app: **
+6. **Register a wallet for your app:**
    Click on the "Wallet" icon to select or create a wallet for use with your app.
 
-7. ** Run your app through the Sandbox browser: **
+7. **Run your app through the Sandbox browser:**
    Start the local server.
     ```bash
     yarn dev
