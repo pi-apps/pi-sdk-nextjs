@@ -1,4 +1,4 @@
-# Pi SDK Next.js Integration – External Developer Guide
+# Pi SDK Next.js Integration – Community Developer Guide
 
 This package helps you quickly scaffold, configure, and integrate all
 necessary components for using Pi Network payments, authentication,
@@ -6,6 +6,8 @@ and user flows with a Next.js project.  It is designed for modern
 Next.js apps (App Router or Pages Router) that want a working,
 idiomatic Pi payment and authentication experience with minimal
 boilerplate.
+It is part of the "Ten Minutes to Transactions" effort described in this
+[video](https://www.youtube.com/watch?v=cIFqf1Z5pRM&t=35s).
 
 ---
 
@@ -13,9 +15,9 @@ boilerplate.
 
 1. **Add as a dependency in your Next.js project**
    ```sh
-   yarn add pi-sdk-nextjs pi-sdk-react pi-sdk-js
+   yarn add pi-sdk-nextjs
    # or
-   npm install pi-sdk-nextjs pi-sdk-react pi-sdk-js
+   npm install pi-sdk-nextjs
    ```
 
 2. **Run the Pi component and API scaffolder:**
@@ -43,10 +45,33 @@ boilerplate.
    }
    ```
 
+6. ** Register your application with Pi Network: **
+   Open your Pi Mining app. Click the hamburger. Select "Pi Utilities". Click the "Develop" icon followed by the
+   "New App" icon. Provide name and description of your app and submit. Then click the "Configuration" icon. Set
+   the app URL to something valid, but does not necessarily exists, and the development URL to be
+   "http://localhost:3000" (actual port is up to you). Submit your changes.
+
+6. ** Provide the Pi API key as an environment variable: **
+   Click on the "API Key" icon to get the API key for your app.
+    ```bash
+    export PI_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```
+
+6. ** Register a wallet for your app: **
+   Click on the "Wallet" icon to select or create a wallet for use with your app.
+
+7. ** Run your app through the Sandbox browser: **
+   Start the local server.
+    ```bash
+    yarn dev
+    ```
+    Visit "https://sandbox.minepi.com/mobile-app-ui/app/your-app-name". It will ask you to provide an
+    authorization code to the Pi Mining app. Click the link at the bottom of the Pi Utilities screen.
+
 ---
 
 ## 📹 Video Script
-You can watch a (video)[https://www.youtube.com/watch?v=cIFqf1Z5pRM&t=35s] describing the entire process.
+You can watch a [video](https://www.youtube.com/watch?v=cIFqf1Z5pRM&t=35s) describing the entire process.
 Here's are the commands used in the video.
 ```bash
 # Create the app
