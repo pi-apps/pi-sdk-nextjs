@@ -18,7 +18,9 @@
     "scripts": {
         "build": "vite build",
         "lint": "eslint",
-        "test": "vitest"
+        "test": "vitest",
+        "test:watch": "vitest --watch",
+        "test:coverage": "vitest --coverage"
     },
     "bin": {
         "pi-sdk-nextjs-install": "./cli.js"
@@ -49,7 +51,8 @@
         "vite": "^7.3.0",
         "vite-plugin-dts": "^4.5.4",
         "vite-tsconfig-paths": "^6.0.3",
-        "vitest": "^1.4.0"
+        "vitest": "^1.4.0",
+        "@vitest/coverage-v8": "^1.4.0"
     },
     "exports": {
         ".": {
